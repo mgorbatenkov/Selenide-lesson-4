@@ -11,7 +11,6 @@ import static com.codeborne.selenide.Selenide.*;
 public class DragAndDrop {
     @BeforeAll
     static void beforeAll() {
-        Configuration.browser = FIREFOX;
         Configuration.startMaximized = true;
         open("https://the-internet.herokuapp.com/drag_and_drop");
     }
@@ -25,21 +24,6 @@ public class DragAndDrop {
     void afterEach() {
         $("#column-a").shouldHave(text("B"));
         $("#column-b").shouldHave(text("A"));
-    }
-
-    @Test
-    void byActionsClickAndHold() {
-        actions().moveToElement($("#column-a")).clickAndHold().moveToElement($("#column-b")).release().perform();
-    }
-
-    @Test
-    void byActionsWithSecondElement() {
-        actions().dragAndDrop($("#column-a"), $("#column-b")).perform();
-    }
-
-    @Test
-    void byActionsWithOffsets() {
-        actions().dragAndDropBy($("#column-a"), 250, 2).perform();
     }
 
     @Test
