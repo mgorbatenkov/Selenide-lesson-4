@@ -20,19 +20,17 @@ public class DragAndDrop {
         Selenide.refresh();
     }
 
-    @AfterEach
-    void afterEach() {
+    @Test
+    void bySelenideMethodUsingJavaScript() {
+        $("#column-a").dragAndDropTo("#column-b", DragAndDropOptions.usingJavaScript());
         $("#column-a").shouldHave(text("B"));
         $("#column-b").shouldHave(text("A"));
     }
 
     @Test
-    void bySelenideMethodUsingJavaScript() {
-        $("#column-a").dragAndDropTo("#column-b", DragAndDropOptions.usingJavaScript());
-    }
-
-    @Test
     void bySelenideMethodUsingActions() {
         $("#column-a").dragAndDropTo("#column-b", DragAndDropOptions.usingActions());
+        $("#column-a").shouldHave(text("B"));
+        $("#column-b").shouldHave(text("A"));
     }
 }

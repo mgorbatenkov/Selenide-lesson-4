@@ -19,8 +19,7 @@ public class SelenideGitHub {
         open("https://github.com/selenide/selenide");
         $("#wiki-tab").click();
         $("#wiki-pages-box").$(withText("more pages")).click();
-        $("#wiki-pages-box").shouldHave(text("SoftAssertions"));
         $("#wiki-pages-box").$(byText("SoftAssertions")).click();
-        $(withText("Using JUnit5")).parent().sibling(0).shouldHave(text("SoftAssertsExtension.class"));
+        $("#wiki-body").shouldHave(text("Using JUnit5"));
     }
 }
